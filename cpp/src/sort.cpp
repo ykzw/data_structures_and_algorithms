@@ -20,7 +20,7 @@ template<> struct _type<uint64_t> { static const std::string name() { return "ui
         Timer t; t.start();                     \
         func(B);                                \
         t.stop();                               \
-        std::cout << name << ": "               \
+        std::cout << name << "  "               \
                   << t.elapsed_time()           \
                   << " s\n";                    \
     }
@@ -38,17 +38,17 @@ void benchmark(int n)
     std::cout << "===== Sort " << n << " elements of type " << _type<T>::name() << " =====\n\n";
 
     if (n < (1 << 16)) {  // O(n^2) algorithms
-        RUN(  insertion_sort, "  Insertion sort");
-        RUN(  selection_sort, "  Selection sort");
-        RUN(     bubble_sort, "     Bubble sort");
+        RUN(  insertion_sort, "Insertion sort  ");
+        RUN(  selection_sort, "Selection sort  ");
+        RUN(     bubble_sort, "Bubble sort     ");
         RUN( bubble_sort_opt, "Opt. bubble sort");
     }
-    RUN(        STL_sort, "        STL sort");
-    RUN( hoare_quicksort, " Hoare quicksort");
+    RUN(        STL_sort, "STL sort        ");
+    RUN( hoare_quicksort, "Hoare quicksort ");
     RUN(lomuto_quicksort, "Lomuto quicksort");
-    RUN(      merge_sort, "      Merge sort");
-    RUN(        heapsort, "        Heapsort");
-    RUN(      radix_sort, "      Radix sort");
+    RUN(      merge_sort, "Merge sort      ");
+    RUN(        heapsort, "Heapsort        ");
+    RUN(      radix_sort, "Radix sort      ");
 
     std::cout << std::endl;
 }
