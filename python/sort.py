@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+'''Sorting algorithms'''
+
 import time
 import types
 import heapq
@@ -216,43 +218,37 @@ def radix_sort(A):
 
 
 
-def _test(func, A, ref):
+def _benchmark(func, A, ml):
     begin = time.time()
     func(A)
     end = time.time()
-    correct = A == ref
-    # stable = all(x == y for x, y in zip(A, ref))
 
-    print(func.__name__)
-    print('  Result: {}'.format(correct))
-    # print('  Stable: {}'.format(stable))
-    print('    Time: {:.4} s'.format(end - begin))
-    print()
+    template = '{{:{}}}  {{:.4}} s'.format(ml)
+    print(template.format(func.__name__, end - begin))
 
 
-def test(p, pred=lambda x: x):
+def benchmark(p, pred=lambda x: x):
     import sort
     n = int(2 ** p)
     print('===== Sort 2^{} = {} elements =====\n'.format(p, n))
-    A = list(range(n))
-    # A = [random.randrange(n * 2) for i in range(n)]
-    random.shuffle(A)
-    ref = sorted(A)
+    A = [random.randrange(n * 2) for i in range(n)]
+    max_length = max(len(name) for name in sort.__dict__ if pred(name))
     for name, attr in sort.__dict__.items():
         if pred(name):
-            _test(attr, A[:], ref)
+            _benchmark(attr, A[:], max_length)
+    print()
 
 
-def test_all():
-    test(9.7, lambda name: 'sort' in name)
+def benchmark_all():
+    benchmark(9.7, lambda name: 'sort' in name)
 
 
-def test_fastonly():
+def benchmark_fastonly():
     candidates = {'quick', 'heap', 'merge', 'radix', 'python'}
     pred = lambda name: 'sort' in name and any(c in name for c in candidates)
-    test(19.3, pred)
+    benchmark(18.3, pred)
 
 
 
 if __name__ == "__main__":
-    test_fastonly()
+    benchmark_fastonly()
