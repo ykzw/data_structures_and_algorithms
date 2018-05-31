@@ -5,3 +5,6 @@ CMakeFiles
 build
 cmake_install.cmake
 Makefile
+bin
+cpp/sort
+cpp/test/test_sort

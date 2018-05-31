@@ -12,4 +12,5 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set (CMAKE_CXX_FLAGS "-O3 -march=native")
 
-add_executable(sort src/sort.cpp)
+file(MAKE_DIRECTORY bin)
+add_executable(bin/sort src/sort.cpp)
