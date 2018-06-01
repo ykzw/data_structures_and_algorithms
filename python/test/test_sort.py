@@ -34,8 +34,3 @@ class SortTestCase(unittest.TestCase, metaclass=TestMeta):
 
     def setUp(self):
         self.A = self.array[:]
-
-
-
-if __name__ == "__main__":
-    unittest.main()
