@@ -40,7 +40,6 @@ class BSTTestCase(unittest.TestCase):
         self.assertEqual(self.t.root, None)
 
 
-
 class RBTTestCase(unittest.TestCase):
     def setUp(self):
         self.n = 2 ** 10
@@ -66,9 +65,9 @@ class RBTTestCase(unittest.TestCase):
         for k in self.out_keys:
             self.assertEqual(self.t.search(k), bst.RedBlackTree.NIL)
 
-    # def test_delete(self):
-    #     for k in self.out_keys:
-    #         self.assertFalse(self.t.delete(k))
-    #     for k in self.in_keys:
-    #         self.assertTrue(self.t.delete(k))
-    #     self.assertEqual(self.t.root, None)
+    def test_delete(self):
+        for k in self.out_keys:
+            self.assertFalse(self.t.delete(k))
+        for k in self.in_keys:
+            self.assertTrue(self.t.delete(k))
+        self.assertTrue(self.t.root.is_nil())
