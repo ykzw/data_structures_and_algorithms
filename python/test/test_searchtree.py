@@ -4,7 +4,7 @@
 import random
 import unittest
 
-import bst
+import searchtree
 
 
 class BSTTestCase(unittest.TestCase):
@@ -14,7 +14,7 @@ class BSTTestCase(unittest.TestCase):
         self.in_keys = list(range(self.n))
         random.shuffle(self.in_keys)
 
-        self.t = bst.BinarySearchTree()
+        self.t = searchtree.BinarySearchTree()
         for k in self.in_keys:
             self.t.insert(k)
 
@@ -47,7 +47,7 @@ class RBTTestCase(unittest.TestCase):
         self.in_keys = list(range(self.n))
         random.shuffle(self.in_keys)
 
-        self.t = bst.RedBlackTree()
+        self.t = searchtree.RedBlackTree()
         for k in self.in_keys:
             self.t.insert(k)
 
@@ -63,7 +63,7 @@ class RBTTestCase(unittest.TestCase):
         for k in self.in_keys:
             self.assertEqual(self.t.search(k).key, k)
         for k in self.out_keys:
-            self.assertEqual(self.t.search(k), bst.RedBlackTree.NIL)
+            self.assertEqual(self.t.search(k), searchtree.RedBlackTree.NIL)
 
     def test_delete(self):
         for k in self.out_keys:

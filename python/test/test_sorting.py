@@ -5,7 +5,7 @@ import random
 import functools
 import unittest
 
-import sort
+import sorting
 
 
 class TestMeta(type):
@@ -17,9 +17,9 @@ class TestMeta(type):
                 self.assertEqual(self.A, self.ref)
             return f
 
-        for name in dir(sort):
+        for name in dir(sorting):
             if 'sort' in name:
-                func = getattr(sort, name)
+                func = getattr(sorting, name)
                 attrs['test_' + name] = test(func)
 
         return type.__new__(cls, name, bases, attrs)
