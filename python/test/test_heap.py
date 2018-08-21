@@ -79,8 +79,8 @@ class MergeableHeapTest:
     def test_decrease_key(self):
         h = self.heap_type(self.items)
         for key, id_ in self.items:
-            h.decrease_key(id_, key - 100)
-        refkeys = [k - 100 for k in self.keys]
+            h.decrease_key(id_, -key - 1)
+        refkeys = sorted(-k - 1 for k in self.keys)
         self.check_heap(h, refkeys)
 
     def check_heap(self, h, refkeys):

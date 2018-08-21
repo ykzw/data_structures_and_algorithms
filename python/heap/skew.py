@@ -47,6 +47,7 @@ class SkewHeap:
         parent = node.parent
         while parent and node < parent:
             self._exchange_nodes(node, parent)
+            node = parent
             parent = node.parent
 
     def _merge_trees(self, u, v):
@@ -60,6 +61,7 @@ class SkewHeap:
         tmp = u.right
         u.right = u.left
         u.left = self._merge_trees(v, tmp)
+        u.left.parent = u
         return u
 
     def _construct(self, A):
