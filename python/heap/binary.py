@@ -21,9 +21,9 @@ class BinaryHeap:
         self.A.extend(other.A)
         self._construct()
 
-    def insert(self, k, id_):
+    def insert(self, key, id_):
         """Insert an item to the heap"""
-        self.A.append((k, id_))
+        self.A.append((key, id_))
         self._siftup(len(self.A) - 1)
 
     def extract(self):
