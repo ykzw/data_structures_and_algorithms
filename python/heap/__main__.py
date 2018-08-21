@@ -62,6 +62,8 @@ def benchmark():
 
     _benchmark(BinaryHeap, items)
     _benchmark(BinomialHeap, items)
+    _benchmark(PairingHeap, items)
+    _benchmark(SkewHeap, items)
 
 
 if __name__ == "__main__":

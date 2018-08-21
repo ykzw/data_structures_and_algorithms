@@ -6,6 +6,8 @@ class BinomialHeap:
     """A binomial min heap"""
 
     class Node:
+        __slots__ = ['key', 'id_', 'parent', 'children']
+
         def __init__(self, key, id_):
             self.key = key
             self.id_ = id_
@@ -39,12 +41,12 @@ class BinomialHeap:
             self.roots[order] = root
         self.id2node.update(other.id2node)
 
-    def insert(self, k, id_):
+    def insert(self, key, id_):
         """Insert an item to the heap"""
         # Create a temporary heap containing a single node with k and id_
         # and merge it into self
         tmpheap = BinomialHeap()
-        node = self.Node(k, id_)
+        node = self.Node(key, id_)
         tmpheap.roots[0] = node
         self.id2node[id_] = node
         self.merge(tmpheap)
@@ -61,7 +63,7 @@ class BinomialHeap:
         return (minroot.key, minroot.id_)
 
     def decrease_key(self, id_, newkey):
-        """Decrease the key of id_ to k"""
+        """Decrease the key of id_ to newkey"""
         node = self.id2node[id_]
         node.key = newkey
         parent = node.parent
@@ -78,8 +80,8 @@ class BinomialHeap:
             return v
 
     def _construct(self, A):
-        for k, id_ in A:
-            self.insert(k, id_)
+        for key, id_ in A:
+            self.insert(key, id_)
 
     def _exchange_nodes(self, u, v):
         u.key, v.key = v.key, u.key

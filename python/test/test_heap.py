@@ -59,25 +59,25 @@ class BinaryHeapTestCase(unittest.TestCase):
 
 
 
-class BinomialHeapTestCase(unittest.TestCase):
+class MergeableHeapTest:
     def setUp(self):
         self.n = 10 ** 3
         self.keys = list(range(self.n))
         self.items = [(k, k) for k in self.keys]
 
-    def test_binomial_heap(self):
-        h = heap.BinomialHeap(self.items)
+    def test_heap(self):
+        h = self.heap_type(self.items)
         self.check_heap(h, self.keys)
 
     def test_merge(self):
-        h1 = heap.BinomialHeap(self.items)
-        h2 = heap.BinomialHeap((k + self.n, id_ + self.n) for k, id_ in self.items)
+        h1 = self.heap_type(self.items)
+        h2 = self.heap_type((k + self.n, id_ + self.n) for k, id_ in self.items)
         h1.merge(h2)
         refkeys = self.keys + [k + self.n for k in self.keys]
         self.check_heap(h1, refkeys)
 
     def test_decrease_key(self):
-        h = heap.BinomialHeap(self.items)
+        h = self.heap_type(self.items)
         for key, id_ in self.items:
             h.decrease_key(id_, key - 100)
         refkeys = [k - 100 for k in self.keys]
@@ -90,5 +90,17 @@ class BinomialHeapTestCase(unittest.TestCase):
             keys.append(h.extract()[0])
         self.assertEqual(refkeys, keys)
         # Check whether nodes have been removed
-        self.assertTrue(not h.roots)
+        self.assertTrue(not h)
         self.assertTrue(not h.id2node)
+
+
+class BinomialHeapTestCase(MergeableHeapTest, unittest.TestCase):
+    heap_type = heap.BinomialHeap
+
+
+class PairingHeapTestCase(MergeableHeapTest, unittest.TestCase):
+    heap_type = heap.PairingHeap
+
+
+class SkewHeapTestCase(MergeableHeapTest, unittest.TestCase):
+    heap_type = heap.SkewHeap
