@@ -104,3 +104,7 @@ class PairingHeapTestCase(MergeableHeapTest, unittest.TestCase):
 
 class SkewHeapTestCase(MergeableHeapTest, unittest.TestCase):
     heap_type = heap.SkewHeap
+
+
+class FibonacciHeapTestCase(MergeableHeapTest, unittest.TestCase):
+    heap_type = heap.FibonacciHeap
