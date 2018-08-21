@@ -33,6 +33,11 @@ def _benchmark(heap_type, items):
         for i in range(len(items)):
             h.decrease_key(i, i - 100)
 
+    n = len(items)
+    h2 = heap_type((k + n, id_ + n) for k, id_ in items)
+    def merge():
+        h.merge(h2)
+
     print(heap_type.__name__)
     t = measure(construct)
     print('* Construct     {:.3} s'.format(t))
@@ -42,6 +47,8 @@ def _benchmark(heap_type, items):
     print('* Insert        {:.3} s'.format(t))
     t = measure(decrease_key)
     print('* Decrease key  {:.3} s'.format(t))
+    t = measure(merge)
+    print('* Merge         {:.3} s'.format(t))
     print()
 
 
@@ -54,6 +61,7 @@ def benchmark():
     print('=====', n, 'items =====\n')
 
     _benchmark(BinaryHeap, items)
+    _benchmark(BinomialHeap, items)
 
 
 if __name__ == "__main__":

@@ -4,3 +4,4 @@
 """Heap data structures"""
 
 from .binary import BinaryHeap
+from .binomial import BinomialHeap

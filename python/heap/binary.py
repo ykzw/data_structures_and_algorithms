@@ -15,13 +15,19 @@ class BinaryHeap:
             self.A = list(A)
             self._construct()
 
+    def merge(self, other):
+        """Merge the "other" heap into self"""
+        # Concatanate the other array and call _construct
+        self.A.extend(other.A)
+        self._construct()
+
     def insert(self, k, id_):
-        """Insert a key (and id) to the heap"""
+        """Insert an item to the heap"""
         self.A.append((k, id_))
         self._siftup(len(self.A) - 1)
 
     def extract(self):
-        """Remove and return the minimum element"""
+        """Remove and return the item with the minimum key"""
         ret = self.A.pop()
         if self.A:
             self.id2pos[ret[1]] = 0
