@@ -22,11 +22,13 @@ class LinkedListDisjointSets:
     def make_set(self, member):
         node = self.Node(member)
         self.mem2node[member] = node
-        node.set_obj = SetObject(node, node)
+        node.set_obj = self.SetObject(node, node)
 
     def union(self, m1, m2):
         s1 = self.mem2node[m1].set_obj
         s2 = self.mem2node[m2].set_obj
+        if s1 == s2:
+            return False
 
         # Merge s2 to s1
         if s1.length < s2.length:
@@ -38,13 +40,14 @@ class LinkedListDisjointSets:
         x.set_obj = s1
         # Update the next of the current s1 tail
         tail = s1.tail
-        tail.next = x
+        tail.next_ = x
         # Update set_obj of s2 nodes other than the head
-        while x.next:
-            x = x.next
+        while x.next_:
+            x = x.next_
             x.set_obj = s1
         # Update the s1 tail
         s1.tail = x
+        return True
 
     def find_set(self, member):
         return self._find_set_of_node(self.mem2node[member])
