@@ -19,12 +19,16 @@ class DisjointSetForest:
 
     def union(self, m1, m2):
         s1, s2 = self._find_set(m1), self._find_set(m2)
+        if s1 is s2:
+            return False
+
         if s1.rank > s2.rank:
             s2.parent = s1
         else:
             s1.parent = s2
             if s1.rank == s2.rank:
                 s2.rank += 1
+        return True
 
     def find_set(self, member):
         s = self._find_set(member)
