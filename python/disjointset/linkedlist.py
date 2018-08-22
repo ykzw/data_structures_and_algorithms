@@ -5,12 +5,16 @@
 # Section 21.2 of Introduction to Algorithms by Cormen et al.
 class LinkedListDisjointSets:
     class SetObject:
+        __slots__ = ['length', 'head', 'tail']
+
         def __init__(self, head=None, tail=None):
             self.length = 1
             self.head = head
             self.tail = tail
 
     class Node:
+        __slots__ = ['member', 'set_obj', 'next_']
+
         def __init__(self, member, set_obj=None, next_=None):
             self.member = member
             self.set_obj = set_obj

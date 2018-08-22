@@ -142,5 +142,11 @@ class FibonacciHeap:
         for key, id_ in A:
             self.insert(key, id_)
 
+    def __getitem__(self, id_):
+        return self.id2node[id_].key
+
+    def __contains__(self, id_):
+        return id_ in self.id2node
+
     def __bool__(self):
         return bool(self.id2node)

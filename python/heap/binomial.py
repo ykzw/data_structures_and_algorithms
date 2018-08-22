@@ -59,6 +59,8 @@ class BinomialHeap:
         # Merge the children of the removed node into self
         tmpheap = BinomialHeap()
         tmpheap.roots = minroot.children
+        for c in minroot.children.values():
+            c.parent = None
         self.merge(tmpheap)
         return (minroot.key, minroot.id_)
 
@@ -87,6 +89,12 @@ class BinomialHeap:
     def _exchange_nodes(self, u, v):
         u.key, v.key = v.key, u.key
         u.id_, v.id_ = v.id_, u.id_
+
+    def __contains__(self, id_):
+        return id_ in self.id2node
+
+    def __getitem__(self, id_):
+        return self.id2node[id_].key
 
     def __bool__(self):
         return bool(self.roots)

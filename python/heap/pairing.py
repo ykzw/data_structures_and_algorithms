@@ -27,6 +27,8 @@ class PairingHeap(SkewHeap):
     def extract(self):
         ret = (self.root.key, self.root.id_)
         self.id2node.pop(self.root.id_)
+        for c in self.root.children:
+            c.parent = None
         self.root = self._merge_list(self.root.children)
         return ret
 

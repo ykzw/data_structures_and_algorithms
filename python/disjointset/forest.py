@@ -4,6 +4,8 @@
 
 class DisjointSetForest:
     class Node:
+        __slots__ = ['member', 'rank', 'parent']
+
         def __init__(self, member):
             self.member = member
             self.rank = 0

@@ -78,6 +78,9 @@ class BinaryHeap:
         self.id2pos[item[1]] = pos
         self.A[pos] = item
 
+    def __getitem__(self, id_):
+        return self.A[self.id2pos[id_]][0]
+
     def __contains__(self, id_):
         return id_ in self.id2pos
 
