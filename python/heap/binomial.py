@@ -89,6 +89,8 @@ class BinomialHeap:
     def _exchange_nodes(self, u, v):
         u.key, v.key = v.key, u.key
         u.id_, v.id_ = v.id_, u.id_
+        self.id2node[u.id_] = u
+        self.id2node[v.id_] = v
 
     def __contains__(self, id_):
         return id_ in self.id2node

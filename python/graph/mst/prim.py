@@ -3,7 +3,7 @@
 
 import random
 
-from heap import SkewHeap as PriorityQueue
+from heap import BinaryHeap as PriorityQueue
 
 
 def prim(G):

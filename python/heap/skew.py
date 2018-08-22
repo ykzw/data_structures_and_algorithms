@@ -38,8 +38,13 @@ class SkewHeap:
     def extract(self):
         ret = (self.root.key, self.root.id_)
         self.id2node.pop(self.root.id_)
-        self.root.left = self.root.right = None
+        if self.root.left:
+            self.root.left.parent = None
+        if self.root.right:
+            self.root.right.parent = None
         self.root = self._merge_trees(self.root.left, self.root.right)
+        if self.root:
+            self.root.parent = None
         return ret
 
     def decrease_key(self, id_, newkey):
@@ -72,6 +77,8 @@ class SkewHeap:
     def _exchange_nodes(self, u, v):
         u.key, v.key = v.key, u.key
         u.id_, v.id_ = v.id_, u.id_
+        self.id2node[u.id_] = u
+        self.id2node[v.id_] = v
 
     def __contains__(self, id_):
         return id_ in self.id2node

@@ -30,6 +30,8 @@ class PairingHeap(SkewHeap):
         for c in self.root.children:
             c.parent = None
         self.root = self._merge_list(self.root.children)
+        if self.root:
+            self.root.parent = None
         return ret
 
     def _merge_trees(self, u, v):

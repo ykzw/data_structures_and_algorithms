@@ -4,3 +4,4 @@
 """Minimum spanning tree algorithms"""
 
 from .kruskal import *
+from .prim import *
