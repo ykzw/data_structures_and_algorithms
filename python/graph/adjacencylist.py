@@ -51,6 +51,15 @@ class AdjacencyList:
         return G
 
     @classmethod
+    def random_DAG(cls, n, m, weighted=False, max_weight=100):
+        G = cls(directed=True, weighted=weighted)
+        for e in cls._gen_edges(n, m, weighted, max_weight):
+            if e[0] > e[1]:
+                e = (e[1], e[0], e[2])
+            G.insert(*e)
+        return G
+
+    @classmethod
     def _gen_edges(cls, n, m, weighted, max_weight):
         if not weighted:
             w = 1

@@ -16,14 +16,14 @@ def benchmark():
     begin = time.time()
     A = kruskal(G)
     end = time.time()
-    print('Kruskal: {:.5} s'.format(end - begin))
+    print('* Kruskal  {:.5} s'.format(end - begin))
     print('-- total weight:', sum(G[u][v] for u, v in A))
     print()
 
     begin = time.time()
     B = prim(G)
     end = time.time()
-    print('   Prim: {:.5} s'.format(end - begin))
+    print('* Prim     {:.5} s'.format(end - begin))
     print('-- total weight:', sum(G[u][v] for u, v in B))
 
 
