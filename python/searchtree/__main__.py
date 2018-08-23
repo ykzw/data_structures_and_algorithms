@@ -41,6 +41,7 @@ def benchmark():
 
     _benchmark(BinarySearchTree, keys)
     _benchmark(RedBlackTree, keys)
+    _benchmark(BTree, keys)
 
 
 if __name__ == "__main__":

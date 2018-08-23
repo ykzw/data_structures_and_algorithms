@@ -47,6 +47,9 @@ class RedBlackTree:
         def is_right_child(self):
             return (self.parent is not None) and (self.parent.right is self)
 
+        def __bool__(self):
+            return self is not RedBlackTree.NIL
+
         def __lt__(self, x):
             return self.key < x.key
 

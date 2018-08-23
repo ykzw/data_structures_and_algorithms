@@ -7,14 +7,14 @@ import unittest
 import searchtree
 
 
-class BSTTestCase(unittest.TestCase):
+class SearchTreeTest:
     def setUp(self):
         self.n = 2 ** 10
 
         self.in_keys = list(range(self.n))
         random.shuffle(self.in_keys)
 
-        self.t = searchtree.BinarySearchTree()
+        self.t = self.tree_type()
         for k in self.in_keys:
             self.t.insert(k)
 
@@ -28,46 +28,26 @@ class BSTTestCase(unittest.TestCase):
 
     def test_search(self):
         for k in self.in_keys:
-            self.assertEqual(self.t.search(k).key, k)
+            self.assertTrue(self.t.search(k))
         for k in self.out_keys:
-            self.assertEqual(self.t.search(k), None)
+            self.assertFalse(self.t.search(k))
 
     def test_delete(self):
         for k in self.out_keys:
             self.assertFalse(self.t.delete(k))
         for k in self.in_keys:
             self.assertTrue(self.t.delete(k))
-        self.assertEqual(self.t.root, None)
+            self.assertFalse(self.t.search(k))
+        self.assertFalse(self.t.root)
 
 
-class RBTTestCase(unittest.TestCase):
-    def setUp(self):
-        self.n = 2 ** 10
+class BSTTestCase(SearchTreeTest, unittest.TestCase):
+    tree_type = searchtree.BinarySearchTree
 
-        self.in_keys = list(range(self.n))
-        random.shuffle(self.in_keys)
 
-        self.t = searchtree.RedBlackTree()
-        for k in self.in_keys:
-            self.t.insert(k)
+class RBTTestCase(SearchTreeTest, unittest.TestCase):
+    tree_type = searchtree.RedBlackTree
 
-        self.out_keys = list(range(self.n, self.n * 2))
 
-    def test_insert(self):
-        for k in self.in_keys:
-            self.assertFalse(self.t.insert(k))
-        for k in self.out_keys:
-            self.assertTrue(self.t.insert(k))
-
-    def test_search(self):
-        for k in self.in_keys:
-            self.assertEqual(self.t.search(k).key, k)
-        for k in self.out_keys:
-            self.assertEqual(self.t.search(k), searchtree.RedBlackTree.NIL)
-
-    def test_delete(self):
-        for k in self.out_keys:
-            self.assertFalse(self.t.delete(k))
-        for k in self.in_keys:
-            self.assertTrue(self.t.delete(k))
-        self.assertTrue(self.t.root.is_nil())
+class BTreeTestCase(SearchTreeTest, unittest.TestCase):
+    tree_type = searchtree.BTree

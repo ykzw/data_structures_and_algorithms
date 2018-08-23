@@ -5,3 +5,4 @@
 
 from .bst import BinarySearchTree
 from .rbt import RedBlackTree
+from .btree import BTree
