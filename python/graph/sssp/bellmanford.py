@@ -19,10 +19,7 @@ class BellmanFord(SSSP):
 
         for u, v, w in edge_list:
             if self.dists[v] > self.dists[u] + w:
-                # A negative cycle exist
-                return False
-
-        return True
+                raise ValueError('A negative cycle exists!')
 
 
 bellman_ford = gen_sssp_func(BellmanFord)

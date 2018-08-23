@@ -5,9 +5,7 @@ import time
 import random
 
 from graph import AdjacencyList as Graph
-from bellmanford import *
-from dag import *
-from dijkstra import *
+from graph.sssp import *
 
 
 def benchmark():

@@ -9,11 +9,6 @@ class SSSP:
         self.dists = [float('inf')] * n
         self.preds = [None] * n
 
-    def clear(self):
-        for i in range(self.n):
-            self.dists[i] = float('inf')
-            self.preds[i] = None
-
     def relax(self, u, v, w):
         d = self.dists[u] + w
         if d < self.dists[v]:
