@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 
-
 class BinaryHeap:
     """A binary min heap"""
 
