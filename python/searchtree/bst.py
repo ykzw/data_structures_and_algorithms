@@ -130,3 +130,16 @@ class BinarySearchTree:
             else:
                 return max(rec(node.left), rec(node.right)) + 1
         return rec(self.root)
+
+    def __iter__(self):
+        stack = []
+        node = self.root
+        while stack or node:
+            if node:
+                stack.append(node)
+                node = node.left
+            else:
+                node = stack.pop()
+                # yield node
+                yield node.key
+                node = node.right

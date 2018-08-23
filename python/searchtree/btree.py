@@ -20,6 +20,13 @@ class BTree:
         def __len__(self):
             return len(self.keys)
 
+        def __iter__(self):
+            if self.is_leaf:
+                yield from self.keys
+            else:
+                for c in self.children:
+                    yield from c
+
     def __init__(self, t=2**10):
         self.t = t
         self.root = self.Node()
@@ -149,3 +156,6 @@ class BTree:
             r = r.children[0]
             h += 1
         return h
+
+    def __iter__(self):
+        yield from self.root

@@ -13,20 +13,26 @@ def _benchmark(tree_type, keys):
     end = time.time()
 
     print(tree_type.__name__)
-    print('* Insert in {:.3} s'.format(end - begin))
-    print('* Height is {}'.format(t.height()))
+    print('* Insert    {:.3} s'.format(end - begin))
+    print('* Height    {}'.format(t.height()))
 
     begin = time.time()
     for k in keys:
         t.search(k)
     end = time.time()
-    print('* Search in {:.3} s'.format(end - begin))
+    print('* Search    {:.3} s'.format(end - begin))
+
+    begin = time.time()
+    for k in t:
+        pass
+    end = time.time()
+    print('* Traverse  {:.3} s'.format(end - begin))
 
     begin = time.time()
     for k in keys:
         t.delete(k)
     end = time.time()
-    print('* Delete in {:.3} s'.format(end - begin))
+    print('* Delete    {:.3} s'.format(end - begin))
 
     print()
 

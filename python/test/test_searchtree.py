@@ -40,6 +40,10 @@ class SearchTreeTest:
             self.assertFalse(self.t.search(k))
         self.assertFalse(self.t.root)
 
+    def test_iter(self):
+        keys = list(self.t)
+        self.assertEqual(sorted(self.in_keys), keys)
+
 
 class BSTTestCase(SearchTreeTest, unittest.TestCase):
     tree_type = searchtree.BinarySearchTree
