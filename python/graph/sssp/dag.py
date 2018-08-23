@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from graph.search import topological_sort
-from common import *
+from .common import *
 
 
 class DAG(SSSP):

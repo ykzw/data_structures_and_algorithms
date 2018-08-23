@@ -6,3 +6,4 @@
 from .adjacencylist import *
 
 import graph.mst
+import graph.sssp

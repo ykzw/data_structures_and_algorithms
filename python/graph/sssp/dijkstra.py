@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from heap import BinaryHeap as PriorityQueue
-from common import *
+from .common import *
 
 
 class Dijkstra(SSSP):
