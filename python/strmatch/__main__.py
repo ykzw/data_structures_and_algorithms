@@ -10,7 +10,7 @@ from strmatch import *
 
 def _benchmark(func, name, text, pattern):
     begin = time.time()
-    print(func(text, pattern))
+    func(text, pattern)
     end = time.time()
     print('* {:<12}  {:.3} s'.format(name, end - begin))
 
@@ -27,9 +27,12 @@ def benchmark():
         def f(text, pattern):
             return func(text, pattern, alphabet)
         return f
-    _benchmark(wrapper(rabin_karp), 'Rabin-Karp', text, pattern)
+    _benchmark(wrapper(rk), 'RK', text, pattern)
     _benchmark(wrapper(automaton), 'Automaton', text, pattern)
     _benchmark(kmp, 'KMP', text, pattern)
+    _benchmark(wrapper(bm), 'BM', text, pattern)
+    _benchmark(wrapper(horspool), 'Horspool', text, pattern)
+    _benchmark(wrapper(sunday), 'Sunday', text, pattern)
 
     print()
 

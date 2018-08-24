@@ -27,8 +27,8 @@ class StrMatchTestCase(unittest.TestCase):
             return func(text, pattern, self.alphabet)
         return wrapper
 
-    def test_rabin_karp(self):
-        f = self.apply_alphabet(strmatch.rabin_karp)
+    def test_rk(self):
+        f = self.apply_alphabet(strmatch.rk)
         self._test(f)
 
     def test_automaton(self):
@@ -37,3 +37,15 @@ class StrMatchTestCase(unittest.TestCase):
 
     def test_kmp(self):
         self._test(strmatch.kmp)
+
+    def test_bm(self):
+        f = self.apply_alphabet(strmatch.bm)
+        self._test(f)
+
+    def test_horspool(self):
+        f = self.apply_alphabet(strmatch.horspool)
+        self._test(f)
+
+    def test_sunday(self):
+        f = self.apply_alphabet(strmatch.sunday)
+        self._test(f)

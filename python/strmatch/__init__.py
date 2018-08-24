@@ -4,6 +4,9 @@
 """String-matching algorithms"""
 
 from .python import *
-from .rabinkarp import *
+from .rk import *
 from .automaton import automaton
 from .kmp import kmp
+from .bm import bm
+from .horspool import horspool
+from .sunday import sunday

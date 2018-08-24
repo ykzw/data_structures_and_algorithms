@@ -3,6 +3,7 @@
 
 
 def kmp(text, pattern):
+    """Knuth-Morris-Pratt"""
     m = len(pattern)
     p = compute_prefix(pattern)
     q = 0

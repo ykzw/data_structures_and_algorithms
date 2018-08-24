@@ -4,7 +4,8 @@
 from .common import *
 
 
-def rabin_karp(text, pattern, alphabet, q=562448657):
+def rk(text, pattern, alphabet, q=562448657):
+    """Rabin-Karp"""
     n = len(text)
     m = len(pattern)
     d = len(alphabet)

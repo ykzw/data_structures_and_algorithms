@@ -8,10 +8,10 @@ import itertools
 
 def is_valid_shift(text, pattern, s):
     m = len(pattern)
-    shifted_txt = itertools.islice(text, s, s + m)
-
-    return all(tsi == pi for tsi, pi in
-               itertools.zip_longest(shifted_txt, pattern, fillvalue=''))
+    for i in range(m):
+        if text[s + i] != pattern[i]:
+            return False
+    return True
 
 
 def random_string(alphabet, n):
