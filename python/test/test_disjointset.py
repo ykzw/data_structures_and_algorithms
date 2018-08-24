@@ -12,7 +12,7 @@ class DisjointSetTestCase:
     def setUp(self):
         self.n = 10 ** 3
         self.keys = list(range(self.n))
-        self.ds = self.test_type()
+        self.ds = self.ds_type()
         for k in self.keys:
             self.ds.make_set(k)
 
@@ -45,12 +45,12 @@ class DisjointSetTestCase:
 
 
 class LinkedListDisjointSetsTestCase(DisjointSetTestCase, unittest.TestCase):
-    test_type = disjointset.LinkedListDisjointSets
+    ds_type = disjointset.LinkedListDisjointSets
 
 
 class DisjointSetForestTestCase(DisjointSetTestCase, unittest.TestCase):
-    test_type = disjointset.DisjointSetForest
+    ds_type = disjointset.DisjointSetForest
 
 
 class DisjointPythonSetsTestCase(DisjointSetTestCase, unittest.TestCase):
-    test_type = disjointset.DisjointPythonSets
+    ds_type = disjointset.DisjointPythonSets

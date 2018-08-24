@@ -10,7 +10,7 @@ def horspool(text, pattern, alphabet):
     table, char2num = make_table(pattern, alphabet)
     indices = []
     i = 0
-    while i < n - m:
+    while i <= n - m:
         j = m - 1
         while j >= 0:
             if text[i + j] != pattern[j]:
